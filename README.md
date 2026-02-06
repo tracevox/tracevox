@@ -38,6 +38,17 @@ The code in this repository is the **open‑source core** of Tracevox. A separat
 
 ---
 
+## Screenshots
+
+Rendered from the demo data included in this repository:
+
+![Tracevox dashboard](docs/screenshots/dashboard.png)
+![Request tracing](docs/screenshots/request_trace.png)
+![Cost analytics](docs/screenshots/cost_overview.png)
+![AI-powered incident triage](docs/screenshots/ai_analysis.png)
+
+---
+
 ## Open Source vs Cloud / Enterprise
 
 Tracevox is developed with a **dual model**:
