@@ -1,5 +1,10 @@
 # Tracevox – Open Source LLM Observability
 
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+[![Backend](https://img.shields.io/badge/backend-FastAPI-009688?logo=fastapi)](https://fastapi.tiangolo.com/)
+[![Frontend](https://img.shields.io/badge/frontend-React%20%2B%20Vite-61DAFB?logo=react)](https://vitejs.dev/)
+[![Open Source](https://img.shields.io/badge/open_source-%E2%9D%A4-brightgreen)](https://github.com/omuili/tracevox-core)
+
 Tracevox is an **open‑source LLM observability platform** for monitoring, debugging, and optimizing production AI applications.
 
 - **Backend**: FastAPI service (`main.py`) with a proxy gateway, analytics, alerts, evaluations, and datasets.
@@ -102,79 +107,14 @@ By default, Vite runs on `http://localhost:5173`. In development, the frontend t
 
 ---
 
-## Deployment
-
-### Backend – Google Cloud Run (Cloud Build)
-
-The repository includes a `cloudbuild.yaml` that:
-
-1. Builds a Docker image from the root `Dockerfile`.
-2. Pushes it to Artifact Registry.
-3. Deploys it to Cloud Run as the **`tracevox-api`** service.
-
-From the repo root:
-
-```bash
-gcloud auth login
-gcloud config set project tracevox-prod
-
-gcloud builds submit --config cloudbuild.yaml \
-  --project=tracevox-prod \
-  --region=us-central1
-```
-
-### Frontend – Vercel
-
-The `frontend/` app is ready to deploy via the Vercel CLI:
-
-```bash
-cd frontend
-vercel --prod
-```
-
-After the first deploy, attach your custom domain (for example, `tracevox.ai`) to this project, then future redeploys are just `vercel --prod`.
-
----
-
-## Publishing the Open‑Source Core to GitHub
-
-If you are creating a **public GitHub repository** for Tracevox:
-
-1. **Create a clean core directory** (excluding enterprise‑only code):
-
-   ```bash
-   mkdir tracevox-core
-   rsync -av \
-     --exclude 'enterprise/' \
-     --exclude 'requirements-enterprise.txt' \
-     ./ tracevox-core/
-   cd tracevox-core
-   ```
-
-2. **Initialize Git and push to GitHub**:
-
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial open-source core of Tracevox"
-   git remote add origin git@github.com:<your-org>/tracevox.git
-   git push -u origin main
-   ```
-
-This ensures the **public open‑source repo** only contains the Apache‑licensed core and not proprietary enterprise extensions.
-
----
-
 ## Contributing
 
 Contributions are welcome:
 
-1. Fork the repository (or the public core repo).
+1. Fork the repository.
 2. Create a feature branch: `git checkout -b feature/my-change`.
 3. Run tests / linting locally.
 4. Open a pull request with a clear description and screenshots where relevant.
-
-Please avoid submitting internal or proprietary enterprise code to the open‑source repository.
 
 ---
 
